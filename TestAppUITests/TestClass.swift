@@ -7,22 +7,23 @@ import XCTest
 
 class TestClass: BaseClass {
     
+    let two = TestData.two
+    let five = TestData.five
+    let seven = TestData.seven
+    
     override func setUp() {
         super.setUp()
         app.launch()
     }
     
     func testCalculateSum() {
-        let e = CalculateScreen(app)
-        let two = TestData.two
-        let five = TestData.five
-        let seven = TestData.seven
+        let calculateScreen = CalculateScreen(app)
         
-        CalculateScreen(app)
-            .enter(number: two, in: e.firstTextField)
-            .enter(number: five, in: e.secondTextField)
-            .tapOn(button: e.computeButton)
+        calculateScreen
+            .enter(number: two, in: calculateScreen.firstTextField)
+            .enter(number: five, in: calculateScreen.secondTextField)
+            .tapOn(button: calculateScreen.computeButton)
         
-        XCTAssertEqual(seven, e.actual)
+        XCTAssertEqual(seven, calculateScreen.actual)
     }
 }

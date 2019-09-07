@@ -25,6 +25,12 @@ class CalculateScreen: LandingScreenElements {
     }
     
     func tapOn(button: XCUIElement) {
+        expect(element: button, status: .hittable, withIn: 20)
         button.tap()
+    }
+    
+    func clearText(in field: XCUIElement) {
+        field.tap()
+        field.typeText(XCUIKeyboardKey.delete.rawValue)
     }
 }
